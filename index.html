@@ -23,7 +23,7 @@
 
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">12 AM</span>
+      <span class="input-group-text">20:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -34,7 +34,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">1 AM</span>
+      <span class="input-group-text">21:00:00</span>
     </div>
     <textarea class="form-control"  style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -45,7 +45,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">2 AM</span>
+      <span class="input-group-text">22:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -56,7 +56,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">3 AM</span>
+      <span class="input-group-text">23:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -67,7 +67,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">1 PM</span>
+      <span class="input-group-text">00:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -78,7 +78,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">2 PM</span>
+      <span class="input-group-text">01:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -89,7 +89,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">3 PM</span>
+      <span class="input-group-text">02:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -100,7 +100,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">4 PM</span>
+      <span class="input-group-text">03:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -111,7 +111,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">5 PM</span>
+      <span class="input-group-text">04:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -131,26 +131,28 @@ console.log(moment().format("hh"));
     console.log(textEl);
 
     console.log($(timeEl).innerText)
-    var randomFormat = "hh a";
-    var convertedDate = moment(randomDate, randomFormat);
-console.log(convertedDate.diff(moment(), "hour"));
+    var randomFormat = "hh";
+    // var randomDate = "1 PM";
+
     for (let i = 0; i < timeEl.length; i++) {
       let timeStamp = timeEl[i].innerText;
       console.log(timeStamp);
       var randomDate = timeStamp;
 
-
+      var convertedDate = moment(randomDate, randomFormat);
+      console.log(convertedDate)
+      console.log(convertedDate.diff(moment(), "hours"));
 
 
       if (convertedDate.diff(moment(), "hour") === 0) {
         console.log("red")
-          // $(textEl).attr("style", "background-color: red");
-      } else if (convertedDate.diff(moment(), "hour") < 0)  {
+          $(textEl[i]).attr("style", "background-color: red;");
+      } else if (convertedDate.diff(moment(), "hour") > -12)  {
         console.log("gray")
-          // $(textEl).attr("style", "background-color: gray");
-      } else {
+          $(textEl[i]).attr("style", "background-color: gray;");
+      } else if (convertedDate.diff(moment(), "hour") <= -12) {
         console.log("UGLY COLOR")
-          // $(textEl).attr("style", "background-color: #6fdf6b"); 
+          $(textEl[i]).attr("style", "background-color: #6fdf6b;"); 
       }
     }
 
