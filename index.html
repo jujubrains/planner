@@ -23,7 +23,7 @@
 
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">20:00:00</span>
+      <span class="input-group-text">09:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -34,7 +34,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">21:00:00</span>
+      <span class="input-group-text">10:00:00</span>
     </div>
     <textarea class="form-control"  style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -45,7 +45,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">22:00:00</span>
+      <span class="input-group-text">11:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -56,7 +56,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">23:00:00</span>
+      <span class="input-group-text">12:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -67,7 +67,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">00:00:00</span>
+      <span class="input-group-text">13:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -78,7 +78,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">01:00:00</span>
+      <span class="input-group-text">14:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -89,7 +89,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">02:00:00</span>
+      <span class="input-group-text">15:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -100,7 +100,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">03:00:00</span>
+      <span class="input-group-text">16:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -111,7 +111,7 @@
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
-      <span class="input-group-text">04:00:00</span>
+      <span class="input-group-text">17:00:00</span>
     </div>
     <textarea class="form-control" style="background-color: #6fdf6b;" aria-label="With textarea"></textarea>
     <div class="input-group-append">
@@ -122,9 +122,9 @@
   </div>
 
 <script>
-$("#today").text(moment().format("dddd MMM Do YY"));
-console.log(JSON.parse(localStorage.getItem(1)))
-console.log(moment().format("hh"));
+    $("#today").text(moment().format("dddd MMM Do YY"));
+    // console.log(JSON.parse(localStorage.getItem(1)))
+    // console.log(moment().format("hh"));
     var timeEl = document.querySelectorAll("span");
     console.log(timeEl);
     var textEl = document.querySelectorAll(".form-control");
@@ -132,9 +132,9 @@ console.log(moment().format("hh"));
     console.log(JSON.parse(localStorage.getItem(1)))
     for (let i = 0; i < 8; i++) {
       var storedPlan = JSON.parse(localStorage.getItem(i));
-      console.log(storedPlan)
+      console.log(storedPlan);
       textEl[i].textContent=storedPlan;
-      console.log(textEl[i])
+      console.log(textEl[i]);
     }
 
     console.log($(timeEl).innerText)
@@ -145,11 +145,9 @@ console.log(moment().format("hh"));
       let timeStamp = timeEl[i].innerText;
       console.log(timeStamp);
       var randomDate = timeStamp;
-
       var convertedDate = moment(randomDate, randomFormat);
-      console.log(convertedDate)
+      console.log(convertedDate);
       console.log(convertedDate.diff(moment(), "hours"));
-
 
       if (convertedDate.diff(moment(), "hour") === 0) {
         console.log("red")
@@ -163,17 +161,14 @@ console.log(moment().format("hh"));
       }
     }
 
-$(".btn").on("click", function(){
-console.log(event.target.value)
-var i=event.target.value;
-console.log(i);
-console.log(textEl[i].value)
-console.log($("textarea"))
-localStorage.setItem(i, JSON.stringify(textEl[i].value));
-})
-
-
-
+    $(".btn").on("click", function(){
+      console.log(event.target.value);
+      var i=event.target.value;
+      console.log(i);
+      console.log(textEl[i].value);
+      console.log($("textarea"));
+      localStorage.setItem(i, JSON.stringify(textEl[i].value));
+    })
 </script>
 </body>
 </html>
